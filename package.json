@@ -10,7 +10,7 @@
   "scripts": {
     "test": "tap \"test/**/*.test.js\"",
     "start": "fastify start -l info app.js",
-    "dev": "fastify start -w -l info -P app.js"
+    "dev": "nodemon --exec \"fastify start -l info app.js\""
   },
   "keywords": [],
   "author": "",
@@ -23,6 +23,7 @@
     "fastify": "^4.0.0",
     "fastify-cli": "^5.7.1",
     "fastify-plugin": "^4.0.0",
+    "nodemon": "^2.0.22",
     "sequelize": "^6.32.0"
   },
   "devDependencies": {

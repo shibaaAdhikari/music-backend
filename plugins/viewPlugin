@@ -1,8 +1,11 @@
-const fastify = require("fastify");
-
-fastify.register(require("@fastify/view"), {
-  engine: {
-    ejs: require("ejs"),
-  },
+import fastify from "fastify";
+import fp from "fastify-plugin";
+import fastifyView from "@fastify/view";
+import ejs from "ejs";
+export default fp(async function (fastify, optns) {
+  fastify.register(fastifyView, {
+    engine: {
+      ejs: ejs,
+    },
+  });
 });
-
