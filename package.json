@@ -22,7 +22,8 @@
     "ejs": "^3.1.9",
     "fastify": "^4.0.0",
     "fastify-cli": "^5.7.1",
-    "fastify-plugin": "^4.0.0"
+    "fastify-plugin": "^4.0.0",
+    "sequelize": "^6.32.0"
   },
   "devDependencies": {
     "@istanbuljs/esm-loader-hook": "0.2.0",
