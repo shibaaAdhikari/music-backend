@@ -1,7 +1,7 @@
 import fp from "fastify-plugin";
 import { DataTypes } from "sequelize";
 export default fp(async (fastify, opts) => {
-  const user = fastify.seqelize.define("user", {
+  const users = fastify.sequelize.define("users", {
     userId: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
@@ -22,6 +22,15 @@ export default fp(async (fastify, opts) => {
       allowNull: false,
     },
   });
-  await user.sync();
-  fastify.decorate("user", user);
+
+  await users
+    .sync({ force: false })
+    .then(() => {
+      console.log("user table created successfully");
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+
+  fastify.decorate("users", users);
 });

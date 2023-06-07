@@ -1,0 +1,92 @@
+<div class="container">
+  <nav class="navbar bg-body-tertiary mt-5">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Users Information</a>
+    </div>
+  </nav>
+  <div class="mt-5">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">user_id</th>
+          <th scope="col">username</th>
+          <th scope="col">email</th>
+          <th scope="col">password</th>
+          <th scope="col">Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% for (let i = 0; i < mappedUsers.length; i++) { %>
+          <tr>
+            <th scope="row"><%= mappedUsers[i].userId %></th>
+            <td><%= mappedUsers[i].username %></td>
+            <td><%= mappedUsers[i].email %></td>
+            <td><%= mappedUsers[i].password %></td>
+            <td> <button onclick="blogDelete('<%=mappedUsers[i].userId %>')" type="button" class="btn btn-danger">Delete</button></td>
+          </tr>
+          <tr>
+            
+          </tr>
+        <% } %>
+      </tbody>
+    </table>
+  </div>
+
+ <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo" >Update users</button>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Users</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="/blogs" method="post">
+          <div class="mb-3">
+            <label for="username" class="col-form-label">UserId</label>
+            <input type="number" class="form-control" id="usernameInput" name="id">
+          </div>
+          <div class="mb-3">
+            <label for="username" class="col-form-label">UserName</label>
+            <input type="text" class="form-control" id="emailInput" name="username">
+          </div>
+          <div class="mb-3">
+            <label for="email" class="col-form-label">Email</label>
+            <input type="text" class="form-control" id=""emailInput name="email">
+          </div>
+          <div class="mb-3">
+            <label for="password" class="col-form-label">Password</label>
+            <input type="text" class="form-control" id="passwordInput" name="password">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="sumbit" class="btn btn-primary" onclick="updateUserModal()">Update</button>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <script>
+
+    function blogDelete(userId){
+      fetch(`blogs/${userId}`,{
+        method:'Delete'
+      }).then((res)=>{
+        window.location.reload();
+      })
+    }
+
+    function updateUserModal(){
+      window.location.reload();
+    }
+  </script>
+</div>
+
+
+
+
+
