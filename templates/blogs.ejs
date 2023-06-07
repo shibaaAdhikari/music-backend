@@ -24,11 +24,15 @@
             <td><%= mappedUsers[i].password %></td>
             <td> <button onclick="blogDelete('<%=mappedUsers[i].userId %>')" type="button" class="btn btn-danger">Delete</button></td>
           </tr>
+          <tr>
+            
+          </tr>
         <% } %>
       </tbody>
     </table>
   </div>
-  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Update users</button>
+
+ <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo" >Update users</button>
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -37,28 +41,34 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form>
+        <form action="/blogs" method="post">
           <div class="mb-3">
-            <label for="recipient-name" class="col-form-label">UserName</label>
-            <input type="text" class="form-control" id="recipient-name">
+            <label for="username" class="col-form-label">UserId</label>
+            <input type="number" class="form-control" id="usernameInput" name="id">
           </div>
           <div class="mb-3">
-            <label for="message-text" class="col-form-label">Email</label>
-            <input type="text" class="form-control" id="recipient-name">
+            <label for="username" class="col-form-label">UserName</label>
+            <input type="text" class="form-control" id="emailInput" name="username">
           </div>
           <div class="mb-3">
-            <label for="message-text" class="col-form-label">Password</label>
-            <input type="text" class="form-control" id="recipient-name">
+            <label for="email" class="col-form-label">Email</label>
+            <input type="text" class="form-control" id=""emailInput name="email">
+          </div>
+          <div class="mb-3">
+            <label for="password" class="col-form-label">Password</label>
+            <input type="text" class="form-control" id="passwordInput" name="password">
           </div>
         </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save</button>
+        <button type="sumbit" class="btn btn-primary" onclick="updateUserModal()">Update</button>
+
       </div>
     </div>
   </div>
 </div>
+
 
   <script>
 
@@ -70,6 +80,9 @@
       })
     }
 
+    function updateUserModal(){
+      window.location.reload();
+    }
   </script>
 </div>
 

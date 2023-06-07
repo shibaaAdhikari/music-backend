@@ -1,6 +1,7 @@
 import {
   deleteBlogsHandler,
   getsBlogsHandler,
+  updateBlogsHandler,
 } from "../../controller/blogController.js";
 
 export default async function (fastify, opts) {
@@ -21,6 +22,12 @@ export default async function (fastify, opts) {
     handler: deleteBlogsHandler,
   };
 
+  const updateBlogsOptns = {
+    schems: {},
+    handler: updateBlogsHandler,
+  };
+
   fastify.post("/blogs", getBlogsOptns);
   fastify.delete("/blogs/:userId", deleteBlogsOptns);
+  fastify.put("/blogs", updateBlogsOptns);
 }

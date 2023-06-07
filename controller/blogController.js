@@ -34,5 +34,26 @@ export const deleteBlogsHandler = async (req, reply) => {
   }
 };
 
+export const updateBlogsHandler = async (req, reply) => {
+  try {
+    const { id, username, email, password } = req.body;
 
+    // Find the user by userId in the database
+    const user = await req.server.users.findOne({ where: { userId: id } });
+    if (!user) {
+      return reply.code(404).send({ message: "User not found" });
+    }
 
+    // Update the user's attributes
+    user.username = username;
+    user.email = email;
+    user.password = password;
+
+    // Save the updated user
+    await user.save();
+
+    reply.code(200).send({ message: "User updated successfully" });
+  } catch (error) {
+    throw new Error(error);
+  }
+};
