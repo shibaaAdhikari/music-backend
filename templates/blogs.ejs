@@ -1,0 +1,33 @@
+<div class="container">
+  <nav class="navbar bg-body-tertiary mt-5">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Users Information</a>
+    </div>
+  </nav>
+  <div class="mt-5">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">user_id</th>
+          <th scope="col">username</th>
+          <th scope="col">email</th>
+          <th scope="col">password</th>
+          <th scope="col">update</th>
+          <th scope="col">delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% for (let i = 0; i < mappedUsers.length; i++) { %>
+          <tr>
+            <th scope="row"><%= mappedUsers[i].userId %></th>
+            <td><%= mappedUsers[i].username %></td>
+            <td><%= mappedUsers[i].email %></td>
+            <td><%= mappedUsers[i].password %></td>
+            <td> <a href="/blogs/edit/<%= mappedUsers[i].userId %>">Edit</a></td>
+            <td> <a href="/blogs/delete/<%= mappedUsers[i].userId %>">Delete</a></td>
+          </tr>
+        <% } %>
+      </tbody>
+    </table>
+  </div>
+</div>

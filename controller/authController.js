@@ -1,17 +1,14 @@
-export const signUpHandler = async (req, reply) => {
+const signUpHandler = async (req, reply) => {
   try {
-    const user = await req.server.user.create({
-      username: req.body.username,
-      email: req.body.email,
-      password: req.body.password,
-    });
-    reply.send(user);
+    const user = await req.server.users.create(req.body);
+    reply.redirect("/blogs/blogs");
+    // reply.send(user);
   } catch (err) {
     console.log(err);
   }
 };
 
-export const signInHandler = async (req, reply) => {
+const signInHandler = async (req, reply) => {
   try {
     const user = await req.server.user.findOne({
       where: { username: req.body.username },
@@ -26,3 +23,5 @@ export const signInHandler = async (req, reply) => {
     console.log(err);
   }
 };
+
+export { signUpHandler, signInHandler };
