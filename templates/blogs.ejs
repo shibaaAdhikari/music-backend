@@ -23,11 +23,23 @@
             <td><%= mappedUsers[i].username %></td>
             <td><%= mappedUsers[i].email %></td>
             <td><%= mappedUsers[i].password %></td>
-            <td> <a href="/blogs/edit/<%= mappedUsers[i].userId %>">Edit</a></td>
-            <td> <a href="/blogs/delete/<%= mappedUsers[i].userId %>">Delete</a></td>
+            <td> <button onClick="">Update</button></td>
+            <td> <button onclick="blogDelete('<%=mappedUsers[i].userId %>')">Delete</button></td>
           </tr>
         <% } %>
       </tbody>
     </table>
   </div>
+  <script>
+
+    function blogDelete(userId){
+      fetch(`blogs/${userId}`,{
+        method:'Delete'
+      }).then((res)=>{
+        window.location.reload();
+      })
+    }
+  </script>
 </div>
+
+
