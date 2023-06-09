@@ -9,12 +9,17 @@ const signUpHandler = async (req, reply) => {
 
 const signInHandler = async (req, reply) => {
   try {
-    const user = await req.server.user.findOne({
-      where: { username: req.body.username },
-    });
+    const { users } = req.server;
+    const { email, password } = req.body;
 
-    if (user.password === req.body.password) {
-      reply.code(200).send({ msg: "Logged in successfully" });
+    const user = await users.findOne({
+      where: { email },
+    });
+    if (!user) {
+      return reply.code(401).send({ msg: "User not found" });
+    }
+
+    if (user.password === password) {
       reply.redirect("/blogs/blogs");
     } else {
       reply.code(401).send({ msg: "Incorrect password" });
