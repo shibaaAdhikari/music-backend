@@ -29,6 +29,7 @@
     "fastify-cli": "^5.7.1",
     "fastify-plugin": "^4.0.0",
     "handlebars": "^4.7.7",
+    "nodemailer": "^6.9.3",
     "nodemon": "^2.0.22",
     "sequelize": "^6.32.0"
   },
