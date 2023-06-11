@@ -7,8 +7,8 @@ export default fastifyPlugin(async function (fastify, options) {
     port: 587,
     secure: false,
     auth: {
-      user: "shibaaadhikari147@gmail.com",
-      pass: "eng7lish",
+      user: "shibaaadhikari0@gmail.com",
+      pass: "sdpwlqswtlryvfxn",
     },
   });
   transporter.verify().then(() => {
