@@ -36,7 +36,7 @@ const signUpHandler = async (req, reply) => {
 
     // await req.server.sendEmail(emailOptions);
 
-    await reply.view("/user/login", {
+    await reply.redirect("/user/login", {
       message: "User created successfully.Please login to continue",
     });
   } catch (err) {
