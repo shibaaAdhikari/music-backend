@@ -21,7 +21,30 @@ export default fp(async (fastify, opts) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    date_of_birth: {
+      type: DataTypes.DATE,
+      allowNull: false,
+    },
   });
+  const Playlist = fastify.sequelize.define("Playlist", {
+    playlist_id: {
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      primaryKey: true,
+    },
+    playlist_name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    created_at: {
+      type: DataTypes.DATE,
+      allowNull: false,
+      defaultValue: DataTypes.NOW,
+    },
+  });
+
+  users.hasMany(Playlist, { foreignKey: "userId" });
+  Playlist.belongsTo(users, { foreignKey: "userId" });
 
   await users
     .sync({ force: false })
@@ -32,5 +55,13 @@ export default fp(async (fastify, opts) => {
       console.log(error);
     });
 
+  await Playlist.sync({ force: false })
+    .then(() => {
+      console.log("Playlist table created successfully");
+    })
+    .catch((error) => {
+      console.log(error);
+    });
   fastify.decorate("users", users);
+  fastify.decorate("Playlist", Playlist);
 });
