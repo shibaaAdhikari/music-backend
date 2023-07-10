@@ -22,9 +22,10 @@ export default fp(async (fastify, opts) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    date_of_birth: {
-      type: DataTypes.DATE,
+    role: {
+      type: DataTypes.ENUM("user", "artist"),
       allowNull: false,
+      defaultValue: "user",
     },
   });
 
@@ -131,18 +132,6 @@ export default fp(async (fastify, opts) => {
     release_date: {
       type: DataTypes.DATE,
       allowNull: false,
-    },
-    lyrics: {
-      type: DataTypes.TEXT,
-      allowNull: true,
-    },
-    cover_image: {
-      type: DataTypes.STRING,
-      allowNull: true,
-    },
-    play_count: {
-      type: DataTypes.INTEGER,
-      defaultValue: 0,
     },
   });
   // Ending for Song
