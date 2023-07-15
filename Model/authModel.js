@@ -109,29 +109,39 @@ export default fp(async (fastify, opts) => {
       autoIncrement: true,
       primaryKey: true,
     },
-    artist_id: {
-      type: DataTypes.INTEGER,
+    artist: {
+      type: DataTypes.CHAR,
       allowNull: false,
     },
-    album_id: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
+    album: {
+      type: DataTypes.CHAR,
+      allowNull: false,
     },
-    genre_id: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
+    genre: {
+      type: DataTypes.ARRAY(DataTypes.CHAR),
+      allowNull: false,
     },
     song_name: {
       type: DataTypes.STRING,
       allowNull: false,
     },
     duration: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
+      type: DataTypes.TIME,
+    },
+    durationInSeconds: {
+      type: DataTypes.FLOAT,
     },
     release_date: {
       type: DataTypes.DATE,
       allowNull: false,
+    },
+    file_path: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    image_path: {
+      type: DataTypes.STRING,
+      allowNull: true,
     },
   });
   // Ending for Song
